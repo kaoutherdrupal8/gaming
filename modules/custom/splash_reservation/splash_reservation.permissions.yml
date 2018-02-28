@@ -1,0 +1,9 @@
+access booking activity: 
+  title: 'Access Booking Activity'
+  description: "Provides access to booking activity"
+  restrict access: 'true'
+
+access admin site see booking: 
+  title: 'Access Admin Site See Booking'
+  description: "Provides access to admin site see booking"
+  restrict access: 'true'

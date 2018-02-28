@@ -1,0 +1,57 @@
+<?php
+/**@file ...*/
+
+/**
+*Implements_hook_schema().
+*/
+use Drupal\Core\Database\Database;
+
+
+function hello_schema(){
+  $schema['hello_node_history'] = [
+    'description' => 'Ajouter une table',
+    'fields' => [
+       'hid' => [
+           'description' => 'primary key',
+           'type' => 'serial',
+           'unsigned' => TRUE,
+           'not null' => TRUE,
+       ],
+       'nid' => [
+           'description' => 'nid',
+           'type' => 'int',
+           'unsigned' => TRUE,
+           'not null' => TRUE,
+       ],
+       'update_time' => [
+           'description' => 'Mettre à jour le temps',
+           'type' => 'int',
+           'not null' => TRUE
+       ],
+    ],
+    'indexes' =>[
+      'nid' => ['nid'],
+      'update_time' => ['update_time']
+    ],
+    'primary key' => ['hid']
+  ];
+  return $schema;
+
+}
+
+
+/**
+*add a field 'uid'.
+*/
+
+function hello_update_8406(){
+  $field_spec = array(
+      'description' => "store user ID",
+      'type' => 'int',
+      'unsigned' => TRUE,
+      'not null' => TRUE,
+  );
+  $schema = Database::getConnection()->schema();
+  $schema->addfield('hello_node_history', 'uid', $field_spec );
+  drupal_set_message('Bonjour, les modifications ont été bien effectués');
+}

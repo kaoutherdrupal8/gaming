@@ -1,0 +1,83 @@
+<?php
+
+/**
+ * @file
+ * Contains reservation.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function splash_reservation_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the reservation module.
+    case 'help.page.splash_reservation':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Splash Reservation Information Custom') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function splash_reservation_theme($existing, $type, $theme, $path) {
+  return array(
+    'btn_go_resa_per_activities' => array(
+      'template' => 'btn-go-resa-per-activities',
+      'variables' => array('data' => NULL)
+    ),
+  );
+}
+
+
+
+function splash_reservation_page_attachments(array &$page){
+
+  $currentPath = \Drupal::service('path.current')->getPath();
+  $testReservation = "/reservation/activity";
+   
+  if (strpos($currentPath, $testReservation) !== false) {
+    $page['#attached']['library'][] = 'splash_reservation/reservation-form';
+  }
+
+  if ( \Drupal::routeMatch()->getRouteName() === "entity.node.canonical") {
+    $node   = \Drupal::routeMatch()->getParameter('node');
+    if (isset($node) && $node->getType() === "activite") {
+      $page['#attached']['library'][] = 'splash_reservation/reservation-activity'; 
+    }
+  }
+  
+  
+  
+}
+/*
+function splash_reservation_menu() {
+  $items = array();
+
+  $items['admin/config/reservation'] = array(
+    'title' => 'Administer My Module',
+    'description' => 'Whatever',
+    'page callback' => 'admin.site.activity.reservation',
+    'page arguments' => NULL,
+    'access arguments' => NULL,
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}*/
+
+/*function splash_reservation_form_alter(&$form, $form_state, $form_id) {
+  // drupal_set_title is deprecated in drupal 8, to use in drupal 7 only
+  if ($form_id === "reservation_form") {
+    $nodeTitle = \Drupal::routeMatch()->getParameters()->get('node')->getTitle();
+    drupal_set_title( t( array(
+        "Réserver l'activité %name",
+        "%name" => $nodeTitle
+        )));
+  }
+}*/

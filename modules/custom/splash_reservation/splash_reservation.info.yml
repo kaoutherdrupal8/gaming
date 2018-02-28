@@ -1,0 +1,15 @@
+name: 'Splash Reservation'
+type: module
+description: 'This module is used for make reservation on the activities'
+package: 'Calculate Route'
+#configure: calculate_route.config
+#dependencies:
+package: 'custom'
+
+version: '8.x-1.01'
+core: '8.x'
+project: 'resa'
+datestamp: 1505687059
+
+
+

@@ -1,0 +1,6 @@
+reservation.form.activity.refresh:
+  route_name: reservation.form.activity
+  title: "Raffraichir la page en cas d'erreur"
+  appears_on:
+    - reservation.form.activity
+

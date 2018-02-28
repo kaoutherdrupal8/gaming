@@ -1,0 +1,8 @@
+access hello:
+  title: 'Access Hello front Page'
+  description: 'Allow user to access hello front Page'
+
+
+administrer hello:
+  title: 'Administrer hello'
+  description: 'Allow user to access and administer hello front Page'

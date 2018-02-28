@@ -1,0 +1,43 @@
+reservation.form.activity:
+  path: '/reservation/activity/{node}'
+  defaults:
+    _form: 'Drupal\splash_reservation\Form\ReservationForm'
+    _title_callback: 'Drupal\splash_reservation\Form\ReservationForm::getTitle'
+  requirements:
+    _permission: 'access cr config'
+  parameters:
+    node:
+      type: node
+
+user.activity.reservation:
+  path: '/user/{user}/reservation'
+  defaults:
+    _title: 'Vos réservations en cours'
+    _form: 'Drupal\splash_reservation\Form\DashboardReservationForm'
+  requirements:
+    _permission: 'access cr config'
+
+user.activity.reservation.history:
+  path: '/user/{user}/reservation/history'
+  defaults:
+    _title: 'Historique de vos réservations'
+    _controller: 'Drupal\splash_reservation\Controller\ActivitiesReservationController::activitiesReservationHistory'
+  requirements:
+    _permission: 'access cr config'
+
+
+admin.site.activity.reservation:
+  path: '/admin/reservation'
+  defaults:
+    _title: 'Les réservations'
+    _controller: 'Drupal\splash_reservation\Controller\AdminSiteActivityReservationController::actual'
+  requirements:
+    _permission: 'access admin site see booking'
+
+admin.site.activity.reservation.history:
+  path: '/admin/reservation/history'
+  defaults:
+    _title: 'Les réservations'
+    _controller: 'Drupal\splash_reservation\Controller\AdminSiteActivityReservationController::old'
+  requirements:
+    _permission: 'access admin site see booking'

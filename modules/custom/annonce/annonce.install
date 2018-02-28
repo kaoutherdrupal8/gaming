@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Annonce module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+use Drupal\Core\Database\Database;
+
+function annonce_schema() {
+  $schema['annonce_history'] = array(
+    'description' => 'Stores annonce per user.',
+    'fields' => array(
+      'ahid' => array(
+        'description' => 'Annonce history ID.',
+        'type' => 'serial',
+        'length' => 10,
+        'not null' => TRUE,
+      ),
+      'uid' => array(
+        'description' => 'User ID.',
+        'type' => 'int',
+        'length' => 10,
+        'not null' => TRUE,
+      ),
+      'aid' => array(
+        'description' => 'Visited annonce ID',
+        'type' => 'int',
+        'length' => 10,
+        'not null' => TRUE,
+      ),
+      'date' => array(
+        'description' => 'Date',
+        'type' => 'int',
+        'length' => 10,
+        'not null' => TRUE,
+      ),
+    ),
+    'indexes' => array(
+      'uid' => array('uid'),
+    ),
+    'primary key' => array('ahid'),
+  );
+
+  return $schema;
+}
+
+

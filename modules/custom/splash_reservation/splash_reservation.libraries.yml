@@ -1,0 +1,18 @@
+reservation-form:
+  version: VERSION
+  css:
+    theme:
+      css/reservation_form.css: {}
+
+reservation-activity:
+  version: VERSION
+  css:
+    theme:
+      css/activity.css: {}
+  # js:
+  #   https://maps.googleapis.com/maps/api/js?key=default: { type: external }
+  #   js/calculate_route.js: {}
+  # dependencies: 
+  #   - core/jquery
+  #   - core/drupalSettings
+

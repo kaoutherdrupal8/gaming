@@ -1,0 +1,57 @@
+<?php
+
+/** @file ...*/
+
+
+
+function splash_reservation_schema(){
+
+	$schema['splash_reservation'] = array(
+		'description' => 'This table is used to store param for the reservation service',
+		'fields' 		=> array(
+			'srid'			=> array(
+								'type' => 'serial',
+								'unsigned' => TRUE,
+								'not null' => TRUE
+							),
+			'nid'			=> array(
+								'type' => 'int',
+								'unsigned' => TRUE,
+								'not null' => TRUE
+							),
+			'uid'			=> array(
+								'type' => 'int',
+								'unsigned' => TRUE,
+								'not null' => TRUE
+							),
+			'date_resa'		=> array(
+								'type' => 'int',
+								'not null' => TRUE
+							),
+			'nb_inscript'	=> array(
+								'type' => 'int',
+								'not null' => TRUE
+							),
+		),
+		'foreign keys' 	=> array(
+			'node_field_data' => array(
+							'table' => 'node_field_data',
+							'columns' => array(
+								'nid' => 'nid',
+							),
+			),
+			'users_field_data' => array(
+							'table' => 'users_field_data',
+							'columns' => array(
+								'uid' => 'uid',
+							),
+			),
+		),
+		'primary key' => array(
+			'srid'
+		),
+	);
+
+	return $schema;
+
+}

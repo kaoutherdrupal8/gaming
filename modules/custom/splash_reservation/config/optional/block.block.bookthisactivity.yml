@@ -1,0 +1,26 @@
+uuid: e849617a-85b7-43f2-bf41-336791c526d2
+langcode: fr
+status: true
+dependencies:
+  module:
+    - splash_reservation
+    - system
+  theme:
+    - splash
+id: bookthisactivity
+theme: splash
+region: content
+weight: 0
+provider: null
+plugin: button_go_reservation_per_activities_block
+settings:
+  id: button_go_reservation_per_activities_block
+  label: 'Book this activity'
+  provider: splash_reservation
+  label_display: visible
+visibility:
+  request_path:
+    id: request_path
+    pages: "/aquatique/*/*\r\n/forme/*/*"
+    negate: false
+    context_mapping: {  }

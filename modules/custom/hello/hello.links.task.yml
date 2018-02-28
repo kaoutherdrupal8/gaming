@@ -1,0 +1,31 @@
+hello.hello:
+  route_name: hello.hello
+  base_route: hello.hello
+  title: 'Hello'
+  weight: 1
+
+
+hello.hello.list.node:
+  route_name: hello.hello.list.node
+  base_route: hello.hello
+  title: 'Node List'
+  weight: 2
+
+hello.json:
+  route_name: hello.json
+  base_route: hello.hello
+  title: 'response'
+  weight: 3
+
+hello.update.history:
+  title: 'Update History'
+  route_name: hello.node.update.history
+  base_route: entity.node.canonical
+  weight: 4
+ 
+
+hello.colorform:
+  route_name: hello.colorform
+  base_route: system.themes_page
+  title: 'Blocks Colors'
+  weight: 2

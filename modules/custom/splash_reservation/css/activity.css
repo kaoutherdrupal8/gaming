@@ -1,0 +1,56 @@
+#planningonactivitypage table {
+    width: 100%;
+    border-spacing: 5px;
+    border-collapse: separate;
+}
+
+#planningonactivitypage table thead th,
+#planningonactivitypage table tbody tr th {
+    border: 0;
+    padding-right: 0;
+    font: 20px "source_sans_prolight";
+    color: #74858e;
+}
+
+
+#planningonactivitypage table tbody tr td {
+    padding: 0;
+    background-color: #cfdce2;
+    width: calc(96% / 7);
+    font: 15px/32px 'bebas_neueregular';
+        font-size: 15px;
+    color: #fff;
+}
+
+#planningonactivitypage table tbody tr td.session{
+	background-color: #3da7d1;
+	color:white;
+	text-align: center;
+	font-weight: bold;
+}
+
+.block-splash-reservation{
+	padding:30px 15px;
+    text-align: center;
+}
+.block-splash-reservation h2{
+	text-align: center;
+	/* padding:10px; */
+}
+
+.block-splash-reservation#bookthisactivity{
+	background-color: #3da7d1;
+	border-radius:5px;
+}
+.block-splash-reservation#bookthisactivity .resa-btn{
+	margin:30px 0 0;
+}
+.block-splash-reservation#bookthisactivity h2,
+.block-splash-reservation#bookthisactivity p{
+	
+	color:white;
+}
+
+.block-splash-reservation#bookthisactivity p{
+	margin:0 0 10px;
+}

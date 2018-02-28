@@ -1,0 +1,24 @@
+user.activity.reservation.task:
+  title: 'Vos réservations en cours'
+  route_name: user.activity.reservation
+  base_route: entity.user.canonical
+  weight: 3
+
+user.activity.reservation.history.task:
+  title: 'Historique des réservations'
+  route_name: user.activity.reservation.history
+  base_route: entity.user.canonical
+  weight: 4
+
+
+admin.site.activity.reservation.task:
+  title: 'À venir'
+  route_name: admin.site.activity.reservation
+  base_route: admin.site.activity.reservation
+  weight: 1
+
+admin.site.activity.reservation.history.task:
+  title: 'Historique'
+  route_name: admin.site.activity.reservation.history
+  base_route: admin.site.activity.reservation
+  weight: 2

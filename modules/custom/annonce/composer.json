@@ -1,0 +1,14 @@
+{
+  "name": "drupal/annonce",
+  "type": "drupal-module",
+  "description": "Exemple d'entité custom",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/annonce",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/annonce",
+    "source": "http://cgit.drupalcode.org/annonce"
+  },
+  "require": { }
+}

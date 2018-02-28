@@ -1,0 +1,7 @@
+services:
+  annonce.event.subscriber.test:
+    class: Drupal\annonce\EventSubscriber\TestSubscriber
+    arguments: ['@current_route_match', '@current_user', '@database', '@date.formatter']
+    tags:
+      - { name: event_subscriber }
+

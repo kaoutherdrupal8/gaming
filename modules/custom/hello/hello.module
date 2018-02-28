@@ -1,0 +1,118 @@
+<?php
+use SameerShelavale\PhpCountriesArray\CountriesArray;
+use Drupal\Component\Utility;
+
+function hello_cron() {
+	drupal_set_message(t('Hello cron task done'), 'warning');
+}
+
+function hello_user_login($account)
+{
+ drupal_set_message(t('Welcome dear %name!' , array('%name' => $account->getUsername())));
+
+ //option 2 drupal_set_message('Welcome dear '.$account->getUsername);
+
+}
+
+/**
+*création hook_entity_update
+*/
+
+
+function hello_node_update($node) {
+
+    //$data = \Drupal::service('database');
+ db_insert('hello_node_history')
+   ->fields([
+       'nid' => $node->id(),
+       'uid' => $node->getRevisionUserId(),
+       'update_time' => $node->getChangedTime(),
+   ])
+   ->execute();
+}
+
+
+
+function hello_page_attachments(array &$page){
+	$page['#attached']['library'][] = 'hello/hello';
+
+}
+
+
+function hello_preprocess_block(array &$variables){
+     $color = \Drupal::config('hello.config')->get('color');
+
+     $block_id = $variables["elements"]["#id"];
+     $block = \Drupal\block\Entity\Block::load($block_id);
+     $variables["region"] = $block->getRegion();
+
+   if ( $variables["region"] === 'sidebar_first') {
+       $variables['attributes']['class'] = $color;
+   }
+   
+   if ( $variables["region"] === 'sidebar_second') {
+       $variables['attributes']['class'] = $color;
+   }
+  
+
+}
+
+
+function hello_theme($existing, $type, $theme, $path) {
+   return array(
+       'hello_node_history' => array(
+           'template'  => 'hello-node-history',
+           'variables' => array(
+           'message' => NULL
+       ),
+     ),
+   );
+}
+
+
+// hook_form_alter:
+
+
+function hello_form_alter(&$form, &$form_state, $form_id){
+  //$form['title']['#title'] = t('modification');
+  //kint($form_id);
+  //$countrys = vendor\SameerShelavale\PhpCountriesArray\src;
+  $countries1 = CountriesArray::getFromContinent( 'num', 'name', 'Europe' );
+  $countries2 = CountriesArray::getFromContinent( 'alpha2', 'name', 'Africa' );
+  $countries3 = CountriesArray::getFromContinent( 'num', 'alpha3', 'Asia' );
+
+
+  if ($form_id == 'contact_message_feedback_form') {
+    
+  
+  $form['phone_number'] = [
+      '#type' => 'tel',
+      '#title' => t('Telephon'),
+      '#description' => t('Enter your tel number.'),
+      '#required' => TRUE,
+      //'#weight' => '-10',
+   ];
+
+   $form['country'] = [
+      '#type' => 'select',
+      '#title' => t('your country'),
+      '#description' => t('Enter your country.'),
+      '#options' => array ($countries1),
+      '#required' => TRUE,
+      '#weight' => '-5',
+   ];
+  $form['actions']['submit']['#value'] = t('SEND NOW');
+  //redéfinition weight des champs du formulaire contact:
+  $form['name']['#weight'] = 100;
+  $form['mail']['#weight'] = 200;
+  $form['phone_number']['#weight'] = 300;
+  $form['message']['#weight'] = 400;
+  $form['actions']['#weight'] = 500;
+  
+
+  unset($form['#process']);
+
+  $form['subject']['#access'] = FALSE;
+
+  }
+}

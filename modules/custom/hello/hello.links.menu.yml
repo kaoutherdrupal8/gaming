@@ -1,0 +1,5 @@
+hello.hello1:
+   title: 'Hi'
+   route_name: hello.hello
+   menu_name: main
+

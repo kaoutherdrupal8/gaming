@@ -1,0 +1,58 @@
+hello.hello:
+  path: '/hello/{param}'
+  defaults:
+    _title: 'Hello'
+    _controller: '\Drupal\hello\Controller\HelloController::content'
+    param: 'no parameter'
+  requirements:
+    _access_hello: '48'
+
+
+
+hello.json:
+  path: '/json'
+  defaults:
+    _title: 'response'
+    _controller: '\Drupal\hello\Controller\HelloController::testResponse'
+  requirements:
+    _access: 'TRUE'
+
+hello.hello.list.node:
+  path: '/hello/list-node/{nodetype}'
+  defaults:
+    _title: 'Node List'
+    _controller: '\Drupal\hello\Controller\HelloNodeListController::content'
+    nodetype: 'no parameter'
+  requirements:
+    _access: 'TRUE'
+
+
+hello.node.update.history:
+  path: '/node/{node}/history'
+  defaults:
+    _title: 'Historique des modifications'
+    _controller: '\Drupal\hello\Controller\HelloNodeHistoryController::nodeUpdateHistory'
+  requirements:
+    _access: 'TRUE'
+
+
+hello.calculator:
+  path: '/calculator'
+  defaults:
+    _title: 'Calculator'
+    _form: '\Drupal\hello\Form\CalculatorForm'
+  requirements:
+    # _access: 'TRUE'
+    _permission: 'access hello'
+
+
+hello.colorform:
+  path: '/admin/colorform'
+  defaults:
+    _form: '\Drupal\hello\Form\ColorForm'
+    _title: 'My block color'
+  requirements:
+    # _access: 'TRUE'
+    _permission: 'Administrer hello'
+
+

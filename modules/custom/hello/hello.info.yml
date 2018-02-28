@@ -1,0 +1,6 @@
+name: Mon Premier module (Hello )
+description: Un module de démontration sur D8
+type: module
+core: 8.x
+version: 8.x-2.x-dev
+package: Netapsys

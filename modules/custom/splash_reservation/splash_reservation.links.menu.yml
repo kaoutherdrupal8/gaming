@@ -1,0 +1,5 @@
+splash_reservation.admin.site.activity.reservation:
+  title: 'Les réservations'
+  parent: system.admin
+  route_name: 'admin.site.activity.reservation'
+  weight: 100

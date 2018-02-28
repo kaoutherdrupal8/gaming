@@ -1,0 +1,41 @@
+uuid: 8ab22a1b-c5ce-48dd-8cfe-6e9f68e94ccb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.annonce.annonce.field_images
+  module:
+    - annonce
+    - image
+    - user
+id: annonce.annonce.default
+targetEntityType: annonce
+bundle: annonce
+mode: default
+content:
+  field_images:
+    weight: 1
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  name:
+    label: hidden
+    type: string
+    weight: -4
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  user_id:
+    label: hidden
+    type: author
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true
